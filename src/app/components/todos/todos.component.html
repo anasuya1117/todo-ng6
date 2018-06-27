@@ -1,0 +1,28 @@
+<mat-card class="container-main-bg">
+<br>
+<br>
+
+<div class="container-main">
+<mat-card class="big-input">
+    <input  #newTodo 
+            type="text" 
+            placeholder="what needs to be done?"
+            (keyup.enter)="addNewTodo(newTodo.value)" 
+            [(ngModel)]="resetInput">
+    <button mat-icon-button
+            (click)="addNewTodo(newTodo.value)">
+        <mat-icon>add</mat-icon>
+    </button>
+</mat-card>
+</div>
+</mat-card>
+
+<div class="container-todos">
+<mat-list>
+<app-todo-item
+    *ngFor="let todo of todos"
+    [todoItem]="todo"
+    (deleteTodoId)="deleteTodo($event)">
+</app-todo-item>
+</mat-list>
+</div>
